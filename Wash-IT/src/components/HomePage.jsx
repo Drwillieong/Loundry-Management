@@ -1,40 +1,44 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+import LaundrySection from "./ServiesSection";
 
 const HomePage = () => {
+
+  const navigate = useNavigate();
+
+  const handleBookingClick = () => {
+    navigate('/booking'); // Navigate to the BookingAndTracking component
+  };
+
+  const handleLoginClick = () => {
+    navigate('/login'); // Navigate to the Log in component
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Navbar */}
-      <nav className="bg-pink-400 p-4 flex justify-between items-center text-white">
-        <h1 className="text-3xl font-bold">Wash It Izzy</h1>
+      <nav className="bg-pink-500 p-5 flex justify-between items-center text-white shadow-lg">
+      <h1 className="text-4xl font-extrabold">Wash It Izzy</h1>
         <div className="space-x-6">
-          <a href="#services" className="hover:underline font-bold">Service and Pricing</a>
+          <a href="#contact" className="hover:underline font-bold">Service and Pricing</a>
           <a href="#contact" className="hover:underline font-bold">Contact</a>
-          <button className="bg-white text-pink-400 px-4 py-2 rounded-lg">Login</button>
+          <button onClick={handleLoginClick} className="bg-white text-pink-400 px-4 py-2 rounded-lg">Login</button>
         </div>
       </nav>
 
        {/* Hero Section */}
-       <div className="relative text-left py-35 px-10 bg-cover bg-center flex items-center" style={{ backgroundImage: "url('/loundry BG.webp')" }}>
+       <div id="" className="relative text-left py-35 px-10 bg-cover bg-center flex items-center" style={{ backgroundImage: "url('/loundry BG.webp')" }}>
         <div className="max-w-3xl">
           <h1 className="text-6xl font-extrabold italic  text-white">EVERY LAUNDRY MAKES A DIFFERENCE</h1>
           <p className="mt-4 text-lg text-white">We offer drop-off, self-service, pick-up & delivery, and dry-cleaning services to make laundry day Izzy-ier for you.</p>
-          <div className="mt-6 flex rounded-4xl">
-            <button className="bg-white text-black px-6 py-3 rounded-l-4xl border-r-2  shadow-md font-medium">Pick up Tonight</button>
-            <button className="bg-white text-black px-6 py-3 rounded-r-4xl shadow-md font-medium flex items-center">Where Add address<span className="ml-2 bg-pink-400 text-white p-2 rounded-full">➝</span></button>
+          <div  onClick={handleBookingClick} className="mt-6 flex rounded-4xl">
+            <div className="bg-white text-black px-6 py-3 rounded-l-4xl border-r-2  shadow-md font-medium">Pick up Tonight</div>
+            <div className="bg-white text-black px-6 py-3 rounded-r-4xl shadow-md font-medium flex items-center">Where Add address<span className="ml-2 bg-pink-400 text-white p-2 rounded-full">➝</span></div>
           </div>
         </div>
       </div>
 
-      {/* Service and Pricing Section */}
-      <section id="services" className="py-20 px-10 text-center">
-        <h3 className="text-3xl font-bold">Our Services & Pricing</h3>
-        <p className="mt-4 text-lg">We offer affordable and quality laundry services.</p>
-        <ul className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <li className="bg-white p-6 rounded-lg shadow-md border">Self-service Wash & Dry</li>
-          <li className="bg-white p-6 rounded-lg shadow-md border">240 per 5 kilo</li>
-          <li className="bg-white p-6 rounded-lg shadow-md border">Free Pick up</li>
-        </ul>
-      </section>
+        <LaundrySection></LaundrySection>
 
       {/* Footer */}
       <footer id="contact" className="bg-gray-900 text-white py-12 mt-10">
